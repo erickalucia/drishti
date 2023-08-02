@@ -9,40 +9,36 @@ function App() {
     {title: "finish morning journal", id:3}
   ])
 
-  console.log(showGoals)
-
   const handleClick = (id) => {
-    setGoals(goals.filter((goal) => {
-      return id !== goal.id
-    }))
-      
-    setGoals(() => {
-      return goals.filter((goal) => {
+    setGoals((prevGoals) => {
+      return prevGoals.filter((goal) => {
         return id !== goal.id
       })
     })
     console.log(id)
   }
 
-
+  console.log(showGoals)
 
   return (
     <div className="App">
       <h1>Ericka's Drishti</h1>
       {showGoals && (
-      <div>
-        <button onClick={() => setShowGoals(false)}> hide goals</button>
-      </div>
+        <div>
+          <button onClick={() => setShowGoals(false)}> hide goals </button>
+        </div>
       )}
       
-      {!showGoals && ( <div>
-        <button onClick={() => setShowGoals(true)}> show goals </button>
-      </div>)}
-      
-      {showGoals && goals.map((event, index) => (
-        <div key={event.id}>
-          <h2>{index+1} - {event.title}</h2>
-          <button onClick={() => handleClick(event.id)}>delete goal</button>
+      {!showGoals && ( 
+        <div>
+          <button onClick={() => setShowGoals(true)}> show goals </button>
+        </div>
+      )}
+
+      {showGoals && goals.map((goal, index) => (
+        <div key={goal.id}>
+          <h2>{index+1} - {goal.title}</h2>
+          <button onClick={() => handleClick(goal.id)}> delete goal </button>
         </div>
       ))}
     </div>
