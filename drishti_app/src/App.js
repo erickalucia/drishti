@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react'
+import Title from './components/Title'
 
 function App() {
   const [showGoals, setShowGoals] = useState(true)
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Ericka's Drishti</h1>
+      <Title />
       {showGoals && (
         <div>
           <button onClick={() => setShowGoals(false)}> hide goals </button>
