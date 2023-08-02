@@ -1,8 +1,10 @@
 import './App.css';
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Title from './components/Title'
+import Modal from './components/Modal'
 
 function App() {
+  const [showModal, setShowModal] = useState(true)
   const [showGoals, setShowGoals] = useState(true)
   const [goals, setGoals] = useState([
     {title: "run deception half", id:1},
@@ -19,11 +21,20 @@ function App() {
     console.log(id)
   }
 
-  console.log(showGoals)
+  console.log(showModal)
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
+  const subtitle = "Your place for developing focus"
 
   return (
     <div className="App">
-      <Title />
+      
+      <Title title="Ericka's Drishti" subtitle={subtitle}/>
+      <Title title="another title" subtitle='another subtitle' />
+
       {showGoals && (
         <div>
           <button onClick={() => setShowGoals(false)}> hide goals </button>
@@ -37,11 +48,18 @@ function App() {
       )}
 
       {showGoals && goals.map((goal, index) => (
-        <div key={goal.id}>
+        <React.Fragment key={goal.id}>
           <h2>{index+1} - {goal.title}</h2>
           <button onClick={() => handleClick(goal.id)}> delete goal </button>
-        </div>
+        </React.Fragment>
       ))}
+
+      {showModal && <Modal handleClose={handleClose}>
+        <h2>Join our mailing list!</h2>
+        <p>Click this link for the blog</p>
+      </Modal>}
+
+      
     </div>
   );
 }
