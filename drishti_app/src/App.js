@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Title from './components/Title'
 import Modal from './components/Modal'
 import GoalList from './components/GoalList'
+import NewGoalForm from './components/NewGoalForm';
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -52,12 +53,12 @@ function App() {
       }
 
       {showModal && <Modal handleClose={handleClose}>
-        <h2>Join our mailing list!</h2>
-        <p>Click this link for the blog</p>
+        
+        <NewGoalForm />
       </Modal>}
 
       <div>
-        <button onClick={() => setShowModal(true)}>Show Modal</button>
+        <button onClick={() => setShowModal(true)}>Add New Goal</button>
       </div>
       
     </div>
