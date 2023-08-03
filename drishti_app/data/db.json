@@ -1,0 +1,17 @@
+{
+  "goals": [
+    {
+      "title": "run deception half",
+      "level":  "hard"
+    },
+    {
+      "title": "finish personal library",
+      "level":  "hard"
+    },
+    {
+      "title": "finish morning journal",
+      "level": "medium"
+    }
+  ],
+  "notes": []
+}
