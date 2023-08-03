@@ -8,11 +8,20 @@ import NewGoalForm from './components/NewGoalForm';
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [showGoals, setShowGoals] = useState(true)
-  const [goals, setGoals] = useState([
-    {title: "run deception half", id:1},
-    {title: "read all books of personal library", id:2},
-    {title: "finish morning journal", id:3}
+  const [goals, setGoals] = useState([{title: "run deception half", id:1},
   ])
+
+    // {title: "run deception half", id:1},
+    // {title: "finish reading all books of personal library", id:2},
+    // {title: "complete morning journal", id:3}
+
+  const addGoal = (event) => {
+    setGoals((prevGoals) => {
+      return [...prevGoals, event]
+    })
+    setShowModal(false)
+  }
+  
 
   const handleClick = (id) => {
     setGoals((prevGoals) => {
@@ -23,11 +32,12 @@ function App() {
     console.log(id)
   }
 
-  console.log(showModal)
 
-  const handleClose = () => {
-    setShowModal(false)
-  }
+
+  // const handleClose = () => {
+  //   setShowModal(false)
+  // }
+  // this was from when we we're closing the model from inside of it
 
   const subtitle = "Your place for developing focus"
 
@@ -35,7 +45,7 @@ function App() {
     <div className="App">
       
       <Title title="Ericka's Drishti" subtitle={subtitle}/>
-      {/* <Title title="another title" subtitle='another subtitle' /> */}
+      {/* <Title title="calendar" subtitle='' /> */}
 
       {showGoals && (
         <div>
@@ -52,9 +62,8 @@ function App() {
       {showGoals && <GoalList goals={goals} handleClick={handleClick}/>
       }
 
-      {showModal && <Modal handleClose={handleClose}>
-        
-        <NewGoalForm />
+      {showModal && <Modal >
+        <NewGoalForm addGoal={addGoal}/>
       </Modal>}
 
       <div>
