@@ -4,10 +4,12 @@ import './NewGoalForm.css'
 export default function NewGoalForm({ addGoal }) {
   const [title, setTitle] = useState('')
   const [date, setDate] = useState('')
+  const [level, setLevel] = useState('')
 
   const resetForm = () => {
     setTitle('')
     setDate('')
+    setLevel('')
   }
 
   const handleSubmit = (e) => {
@@ -16,9 +18,12 @@ export default function NewGoalForm({ addGoal }) {
     const event = {
       title: title,
       date: date, 
+      level: level,
       id: Math.floor(Math.random() * 10000)
       // refactor later for better random id generator
     }
+
+    console.log(event)
 
     addGoal(event)
     resetForm()
@@ -46,6 +51,14 @@ export default function NewGoalForm({ addGoal }) {
           onChange={(e) => setDate(e.target.value)}
           value = {date}
         />
+      </label>
+      <label>
+        <span>Level:</span>
+        <select onChange={(e) => setLevel(e.target.value)}>
+          <option value="easy">easy</option>
+          <option value="medium">medium</option>
+          <option value="hard">hard</option>
+        </select>
       </label>
       <button>Submit</button>
       {/* <p>title - {title}, date - {date}</p>

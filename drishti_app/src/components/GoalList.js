@@ -6,6 +6,8 @@ export default function GoalList({ goals, handleClick }) {
       {goals.map((goal, index) => (
         <React.Fragment key={goal.id}>
           <h2>{index+1} - {goal.title}</h2>
+          <p>{goal.level}</p>
+          <p>{goal.date}</p>
           <button onClick={() => handleClick(goal.id)}> delete goal </button>
         </React.Fragment>
       ))}
