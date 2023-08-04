@@ -1,0 +1,31 @@
+
+
+.task-list {
+  width: 480px;
+  margin: 60px auto;
+}
+
+.trip-list ul {
+  padding: 0;
+}
+
+.trip-list-li {
+  border: 1px solid snow;
+  box-sizing: border-box;
+  padding: 10px;
+  box-shadow: 4px 4px 6px pink;
+  border-radius: 4px;
+  list-style-type: none;
+  margin: 20px 0;
+}
+
+.task-list .filters {
+  display: flex;
+  gap: 10px;
+}
+
+.trip-list button {
+  padding: 10px;
+  font-size: 16px;
+  flex-grow: 1;
+}

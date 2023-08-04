@@ -30,3 +30,12 @@ code {
   margin-top: 10px;
   margin-bottom: 60px;
 }
+
+.board-title {
+  display: inline-block;
+  padding: 15px 30px;
+  background: lavender;
+  border-radius: 8px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}

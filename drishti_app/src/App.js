@@ -11,9 +11,6 @@ function App() {
   const [goals, setGoals] = useState([{title: "run deception half", id:1},
   ])
 
-    // {title: "run deception half", id:1},
-    // {title: "finish reading all books of personal library", id:2},
-    // {title: "complete morning journal", id:3}
 
   const addGoal = (event) => {
     setGoals((prevGoals) => {
@@ -22,7 +19,6 @@ function App() {
     setShowModal(false)
   }
   
-
   const handleClick = (id) => {
     setGoals((prevGoals) => {
       return prevGoals.filter((goal) => {
@@ -34,18 +30,17 @@ function App() {
 
 
 
-  // const handleClose = () => {
-  //   setShowModal(false)
-  // }
-  // this was from when we we're closing the model from inside of it
-
   const subtitle = "Your place for developing focus"
 
   return (
     <div className="App">
       
       <Title title="Ericka's Drishti" subtitle={subtitle}/>
-      {/* <Title title="calendar" subtitle='' /> */}
+      <Title title="Calendar" subtitle='' />
+      <Title title="Goals" subtitle='' />
+      
+
+      
 
       {showGoals && (
         <div>
@@ -69,6 +64,12 @@ function App() {
       <div>
         <button onClick={() => setShowModal(true)}>Add New Goal</button>
       </div>
+
+      <Title title="Notes" subtitle='' />
+      <Title title="Tasks" subtitle='' />
+      <Title title="Habits" subtitle='' />
+      <Title title="Journal" subtitle='' />
+      <Title title="21 Day Challenge" subtitle='' />
       
     </div>
   );

@@ -13,5 +13,15 @@
       "level": "medium"
     }
   ],
-  "notes": []
+  "notes": [],
+  "tasks": [
+    {
+      "title": "deposit money at bank",
+      "urgency": "Non-urgent"
+    },
+    {
+      "title": "fill tank with gas",
+      "urgency": "Urgent"
+    }
+  ]
 }
