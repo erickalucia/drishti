@@ -1,0 +1,22 @@
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDImX3oD05VblFVCXirHyKn6WkGA888WcI",
+  authDomain: "drishti-d0bc3.firebaseapp.com",
+  projectId: "drishti-d0bc3",
+  storageBucket: "drishti-d0bc3.appspot.com",
+  messagingSenderId: "993841355805",
+  appId: "1:993841355805:web:fa9fee39f01d94ce8bbaf4",
+  measurementId: "G-WKLXLKL6FK"
+};
+
+// initialize firebase
+firebase.initializeApp(firebaseConfig)
+
+// initialize services
+const projectFirestore = firebase.firestore()
+
+// export 
+export { projectFirestore }
