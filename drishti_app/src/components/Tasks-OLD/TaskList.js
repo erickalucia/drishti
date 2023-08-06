@@ -21,9 +21,6 @@ export default function TaskList() {
 
   // console.log(tasks)
 
-
-
-
   return (
     <div className="task-list">
       <h2>TaskList</h2>
