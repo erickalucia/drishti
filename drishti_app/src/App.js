@@ -1,16 +1,22 @@
 import './App.css';
 import { useState } from 'react'
 import Title from './components/Title'
-import Modal from './components/Modal'
-import GoalList from './components/GoalList'
-import NewGoalForm from './components/NewGoalForm';
+import Board from './components/BoardOutline'
+import Modal from './components/Goals/Modal'
+import GoalList from './components/Goals/GoalList'
+import NewGoalForm from './components/Goals/NewGoalForm';
+import NoteModal from './components/Notes/NoteModal'
+import NoteList from './components/Notes/NoteList'
+import NewNoteForm from './components/Notes/NewNoteForm'
 
 function App() {
+  const subtitle = "Your place for developing focus"
+
+  // GOALS //
   const [showModal, setShowModal] = useState(false)
   const [showGoals, setShowGoals] = useState(true)
   const [goals, setGoals] = useState([{title: "run deception half", id:1},
   ])
-
 
   const addGoal = (event) => {
     setGoals((prevGoals) => {
@@ -27,21 +33,43 @@ function App() {
     })
     console.log(id)
   }
+  // GOALS //
 
+  // // NOTES //
+  const [showNoteModal, setShowNoteModal] = useState(false)
+  const [showNotes, setShowNotes] = useState(true)
+  const [notes, setNotes] = useState([{title: "note note note", id:1},
+  ])
 
-
-  const subtitle = "Your place for developing focus"
-
+  const addNote = (event) => {
+    setNotes((prevNotes) => {
+      return [...prevNotes, event]
+    })
+    setShowNoteModal(false)
+  }
+  
+  const handleNoteClick = (id) => {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => {
+        return id !== note.id
+      })
+    })
+    console.log(id)
+  }
+  // NOTES //
+  
   return (
     <div className="App">
       
       <Title title="Ericka's Drishti" subtitle={subtitle}/>
-      <Title title="Calendar" subtitle='' />
-      <Title title="Goals" subtitle='' />
+      <br />
+      <Board boardTitle="Calendar" boardSubtitle='' />
+      <br />
       
-
       
-
+      
+{/* GOALS */}
+      <Board boardTitle="Goals" />
       {showGoals && (
         <div>
           <button onClick={() => setShowGoals(false)}> hide goals </button>
@@ -64,12 +92,59 @@ function App() {
       <div>
         <button onClick={() => setShowModal(true)}>Add New Goal</button>
       </div>
+{/* GOALS */}
 
-      <Title title="Notes" subtitle='' />
-      <Title title="Tasks" subtitle='' />
-      <Title title="Habits" subtitle='' />
-      <Title title="Journal" subtitle='' />
-      <Title title="21 Day Challenge" subtitle='' />
+<br />
+{/* NOTES */}
+      <Board boardTitle="Notes" />
+
+      {showNotes && (
+        <div>
+          <button onClick={() => setShowNotes(false)}> hide notes </button>
+        </div>
+      )}
+      
+      {!showNotes && ( 
+        <div>
+          <button onClick={() => setShowNotes(true)}> show notes </button>
+        </div>
+      )}
+
+      {showNotes && <NoteList notes={notes} handleClick={handleNoteClick}/>
+      }
+
+      {showNoteModal && <NoteModal >
+        <NewNoteForm addNote={addNote}/>
+      </NoteModal>}
+
+      <div>
+        <button onClick={() => setShowNoteModal(true)}>Add New Note</button>
+      </div>
+
+{/* NOTES */}
+
+<br />
+{/* Tasks */}
+      <Board boardTitle="Tasks" />
+{/* Tasks */}
+
+<br />
+{/* Habits */}
+      <Board boardTitle="Habits" />
+{/* Habits */}
+
+<br />
+{/* Journal */}
+      <Board boardTitle="Journal" />
+{/* Journal */}
+
+<br />
+{/* 21 Day Challenge */}
+      <Board boardTitle="21 Day Challenge" />
+{/* 21 Day Challenge */}
+
+
+
       
     </div>
   );
